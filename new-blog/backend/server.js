@@ -2,6 +2,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require("path");
 
 const app = express();
 
@@ -64,6 +65,11 @@ app.post('/api/posts', async (req, res) => {
 app.get('/api/posts', async (req, res) => {
   const posts = await Post.find();
   res.json(posts);
+});
+
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
 });
 
 const PORT = process.env.PORT || 8000;

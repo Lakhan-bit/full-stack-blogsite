@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
   const register = async (username, password) => {
-    const res = await fetch('http://localhost:8000/api/register', {
+    const res = await fetch(`${window.location.origin}/api/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (username, password) => {
-    const res = await fetch('http://localhost:8000/api/login', {
+    const res = await fetch(`${window.location.origin}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),

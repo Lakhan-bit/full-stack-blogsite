@@ -8,7 +8,7 @@ export const BlogProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await fetch('http://localhost:8000/api/posts');
+      const res = await fetch(`${window.location.origin}/api/posts`);
       const data = await res.json();
       setPosts(data);
     };
@@ -17,7 +17,7 @@ export const BlogProvider = ({ children }) => {
   }, []);
 
   const addPost = async (title, content, author) => {
-    const res = await fetch('http://localhost:8000/api/posts', {
+    const res = await fetch(`${window.location.origin}/api/posts`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title, content, author }),
